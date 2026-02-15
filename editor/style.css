@@ -1,0 +1,22 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background: #ccc;
+    font-family: Arial, sans-serif;
+}
+
+#toolbar {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background: white;
+    padding: 10px;
+    border-radius: 6px;
+    z-index: 10;
+}
+
+#toolbar button {
+    display: block;
+    margin-bottom: 5px;
+    width: 100px;
+}

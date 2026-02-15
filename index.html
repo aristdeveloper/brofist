@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Brofist.io</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #e6e6e6;
+        }
+
+        .topbar {
+            background: #dcdcdc;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            padding: 0 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            margin-right: 40px;
+        }
+
+        .menu {
+            display: flex;
+            gap: 30px;
+            color: #333;
+        }
+
+        .menu-right {
+            margin-left: auto;
+            position: relative;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 260px);
+            gap: 40px;
+            justify-content: center;
+            padding: 60px 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 6px;
+            overflow: hidden;
+            text-decoration: none;
+            color: black;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-title {
+            text-align: center;
+            padding: 12px;
+            font-size: 16px;
+            background: #f2f2f2;
+        }
+
+        .card.race {
+            grid-column: 1 / span 1;
+        }
+
+        /* AUTH MODAL */
+
+        .auth-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        .auth-box {
+            background: #eee;
+            padding: 25px;
+            border-radius: 8px;
+            width: 260px;
+            position: relative;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .auth-close {
+            position: absolute;
+            right: 10px;
+            top: 8px;
+            cursor: pointer;
+            color: red;
+            font-weight: bold;
+        }
+
+        .auth-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .auth-tabs button {
+            flex: 1;
+            padding: 6px;
+        }
+
+        .auth-error {
+            color: red;
+            font-size: 13px;
+            min-height: 18px;
+        }
+
+        .auth-box input {
+            width: 100%;
+            margin: 5px 0;
+            padding: 6px;
+        }
+
+        .auth-box button {
+            margin-top: 5px;
+            padding: 6px;
+            width: 100%;
+        }
+
+        /* Logout dropdown */
+        #userDropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 30px;
+            background: white;
+            border: 1px solid #ccc;
+            padding: 8px 15px;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            z-index: 9999;
+        }
+
+        #userDropdown:hover {
+            background: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<div class="topbar">
+    <div class="logo">i BROFIST.IO</div>
+
+    <div class="menu">
+        <div>Editor</div>
+        <div>Browser</div>
+        <div>Avatar</div>
+        <div>Shop</div>
+        <div>Menu</div>
+    </div>
+
+    <div class="menu menu-right">
+        <div id="signBtn" style="cursor:pointer;">Sign in</div>
+        <div id="userDropdown">Logout</div>
+    </div>
+</div>
+
+<div class="container">
+
+    <a class="card" href="modes/twoPlayer/c/game.html">
+        <img src="img/thumbnails/twoPlayer.png" alt="">
+        <div class="card-title">Two Player Adventure</div>
+    </a>
+
+    <a class="card" href="modes/hideAndSeek/c/game.html">
+        <img src="img/thumbnails/hideAndSeek.png" alt="">
+        <div class="card-title">Hide and Seek</div>
+    </a>
+
+    <a class="card" href="modes/sandbox/c/game.html">
+        <img src="img/thumbnails/sandbox.png" alt="">
+        <div class="card-title">Sandbox</div>
+    </a>
+
+    <a class="card race" href="modes/race/c/game.html">
+        <img src="img/thumbnails/race.png" alt="">
+        <div class="card-title">Race</div>
+    </a>
+
+</div>
+
+<!-- AUTH MODAL -->
+
+<div id="authOverlay" class="auth-overlay">
+    <div class="auth-box">
+        <div class="auth-close" id="authClose">✕</div>
+
+        <div class="auth-tabs">
+            <button id="tabLogin">Sign In</button>
+            <button id="tabRegister">Sign Up</button>
+        </div>
+
+        <div id="authError" class="auth-error"></div>
+
+        <input id="authUsername" placeholder="Username">
+        <input id="authPassword" type="password" placeholder="Password">
+
+        <button id="authSubmit">Continue</button>
+    </div>
+</div>
+
+<script src="auth.js"></script>
+
+</body>
+</html>
